@@ -7,13 +7,14 @@ dayjs.extend(relativeTime)
 
 type PostWithUser = RouterOutputs['posts']['getAll'][number]
 
-const PostView = (props: PostWithUser) => {
-  const { post, author } = props
+const PostView = ({ post, author }: PostWithUser) => {
+  const { username, profileImageUrl } = author
+  const { content, createdAt, id } = post
 
   return (
-    <div key={post.id} className="flex gap-4 border-b border-slate-400 p-8">
+    <div key={id} className="flex gap-4 border-b border-slate-400 p-8">
       <Image
-        src={author.profileImageUrl}
+        src={profileImageUrl}
         alt="Profile image"
         className="w-14 h-14 rounded-full"
         width={56}
@@ -21,11 +22,13 @@ const PostView = (props: PostWithUser) => {
       />
       <div className="flex flex-col gap-2">
         <div className="flex gap-2 text-sm text-slate-300 self-center">
-          <span className="font-bold">{`@${author.username}`}</span>
+          <a href={`https://github.com/${username}`}>
+            <span className="font-bold hover:underline duration-200">{`@${username}`}</span>
+          </a>
           <span>·</span>
-          <span>{`${dayjs(post.createdAt).fromNow()}`}</span>
+          <span>{`${dayjs(createdAt).fromNow()}`}</span>
         </div>
-        <span className="text-white">{post.content}</span>
+        <span className="text-white">{content}</span>
       </div>
     </div>
   )
