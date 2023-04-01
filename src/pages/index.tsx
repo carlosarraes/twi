@@ -25,9 +25,9 @@ const Home: NextPage = () => {
       <main className="flex justify-center w-full h-screen">
         <section className="w-full border-x border-slate-400 md:max-w-2xl flex flex-col">
           <header className="flex justify-between border-b border-slate-400 p-4">
-            <div className="flex">
+            <div className="flex p-2 gap-2">
               <h2 className="text-4xl font-bold text-white self-center">
-                <FaCrow className="ml-6 text-5xl" />
+                <FaCrow className="text-5xl" />
               </h2>
               <h1 className="text-4xl self-center">Crowie</h1>
             </div>
