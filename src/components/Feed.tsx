@@ -5,7 +5,12 @@ import Spinner from './Spinner'
 const Feed = () => {
   const { data, isLoading: postsLoading } = api.posts.getAll.useQuery()
 
-  if (postsLoading) return <Spinner size={40} />
+  if (postsLoading)
+    return (
+      <main className="flex justify-center items-center w-full h-screen">
+        <Spinner size={40} />
+      </main>
+    )
 
   if (!data) return <section>Something went wrong</section>
 
